@@ -1,0 +1,25 @@
+diff --git a/build.xml b/build.xml
+index f40db15a..7187e72d 100644
+--- a/build.xml
++++ b/build.xml
+@@ -489,6 +489,7 @@ xmlns:cs="antlib:com.puppycrawl.tools.checkstyle">
+         <env key="base_dir" value="${basedir}"/>
+         <env key="CALLER" value="ANT"/>
+         <arg value="--prefix=${build.dir}/c/build/${package.prefix}"/>
++        <arg value="--without-cppunit"/>
+         <arg line="${enable.gcov.arg}"/>
+       </exec>
+       <property name="c.build" value="${build.dir}/c/build"/>
+diff --git a/src/c/Makefile.am b/src/c/Makefile.am
+index 5993098d..3c571d2c 100644
+--- a/src/c/Makefile.am
++++ b/src/c/Makefile.am
+@@ -6,7 +6,7 @@ if SOLARIS
+   SOLARIS_LIB_LDFLAGS = -lnsl -lsocket
+ endif
+ AM_CPPFLAGS = -I${srcdir}/include -I${srcdir}/tests -I${srcdir}/generated $(SOLARIS_CPPFLAGS)
+-AM_CFLAGS = -Wall -Werror 
++AM_CFLAGS = -Wall -Werror -Wno-error=stringop-truncation -Wno-error=format-overflow
+ AM_CXXFLAGS = -Wall $(USEIPV6)
+
+ # Additional flags for coverage testing (if enabled)

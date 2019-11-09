@@ -79,7 +79,7 @@ Source7: zookeeper.default
 Source8: init.d.tmpl
 Source9: zookeeper-rest.svc
 #BIGTOP_PATCH_FILES
-BuildRequires: autoconf, automake, cppunit-devel
+BuildRequires: autoconf, automake
 Requires(pre): coreutils, /usr/sbin/groupadd, /usr/sbin/useradd
 Requires(post): %{alternatives_dep}
 Requires(preun): %{alternatives_dep}
