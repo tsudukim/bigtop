@@ -22,9 +22,9 @@ fi
 
 case ${ID}-${VERSION_ID} in
     fedora-26)
-      dnf -y install yum-utils
-      dnf -y check-update
-      dnf -y install hostname findutils curl sudo unzip wget puppet puppetlabs-stdlib procps-ng
+        dnf -y install yum-utils
+        dnf -y check-update
+        dnf -y install hostname findutils curl sudo unzip wget puppet puppetlabs-stdlib procps-ng
         ;;
     ubuntu-16.04)
         apt-get update
@@ -33,7 +33,7 @@ case ${ID}-${VERSION_ID} in
     debian-9*)
         apt-get update
         apt-get -y install wget curl sudo unzip puppet puppet-module-puppetlabs-apt puppet-module-puppetlabs-stdlib systemd-sysv
-         ;;
+        ;;
     opensuse-42.3)
         zypper --gpg-auto-import-keys install -y curl sudo unzip wget puppet suse-release ca-certificates-mozilla net-tools tar
         puppet module install puppetlabs-stdlib
@@ -46,6 +46,11 @@ case ${ID}-${VERSION_ID} in
         # puppet in distro is updated.
         yum -y install hostname curl sudo unzip wget puppet
         puppet module install puppetlabs-stdlib --version 4.12.0
+        ;;
+    rhel-8*)
+        rpm -Uvh https://yum.puppet.com/puppet5-release-el-8.noarch.rpm
+        dnf -y check-update
+        dnf -y install puppet-agent
         ;;
     *)
         echo "Unsupported OS ${ID}-${VERSION_ID}."
