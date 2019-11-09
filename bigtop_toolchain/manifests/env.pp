@@ -28,7 +28,7 @@ class bigtop_toolchain::env {
     'Ubuntu','Debian': {
       $javahome = "/usr/lib/jvm/${java}-openjdk-$arch"
     }
-    'Fedora','Centos', 'Amazon': {
+    'Fedora','Centos','RedHat','Amazon': {
       $javahome = "/usr/lib/jvm/${java}"
     }
     'OpenSuSE' : {

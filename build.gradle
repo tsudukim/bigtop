@@ -227,7 +227,7 @@ task toolchain(type:Exec,
     description: 'Setup dev. env via toolchain; Requires: Puppet, sudo',
     group: DEVENV_GROUP) {
   def command = [
-      'sudo', 'puppet', 'apply', '-d', '--parser', 'future',
+      'sudo', 'puppet', 'apply', '-d', 'future',
       "--modulepath=${projectDir.absolutePath}:/etc/puppet/modules", '-e',
       'include bigtop_toolchain::installer'
   ]
@@ -251,7 +251,7 @@ task "toolchain-devtools"(type:Exec,
   def command = [
       'sudo', 'puppet', 'apply', '-d',
       "--modulepath=${projectDir.absolutePath}", '-e',
-      'include bigtop_toolchain::development-tools'
+      'include bigtop_toolchain::development_tools'
   ]
   workingDir '.'
   commandLine command

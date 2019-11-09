@@ -15,7 +15,7 @@
 
 class bigtop_toolchain::packages {
   case $operatingsystem{
-    /(?i:(centos|fedora))/: {
+    /(?i:(centos|fedora|redhat))/: {
       $pkgs = [
         "unzip",
         "rsync",
@@ -224,7 +224,7 @@ class bigtop_toolchain::packages {
 
   # Install Python packages using pip
   case $operatingsystem{
-    /(?i:(centos|fedora))/: {
+    /(?i:(centos|fedora|redhat))/: {
       $pip = 'python2-pip'
     } /(?i:(SLES|opensuse))/: { 
       $pip = 'python-pip'
