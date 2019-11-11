@@ -19,7 +19,7 @@ set -ex
 . `dirname $0`/bigtop.bom
 
 # BIGTOP-2607
-sed -i -e /useZincServer/d -e /recompileMode/d pom.xml
+#sed -i -e /useZincServer/d -e /recompileMode/d pom.xml
 
 BUILD_OPTS="-Divy.home=${HOME}/.ivy2 -Dsbt.ivy.home=${HOME}/.ivy2 -Duser.home=${HOME} \
             -Drepo.maven.org=$IVY_MIRROR_PROP \
@@ -30,10 +30,9 @@ BUILD_OPTS="-Divy.home=${HOME}/.ivy2 -Dsbt.ivy.home=${HOME}/.ivy2 -Duser.home=${
             -DrecompileMode=all \
             -Pyarn -Phadoop-2.7 \
             -Phive -Phive-thriftserver \
-            -Psparkr \
             $SPARK_BUILD_OPTS"
 
-./dev/make-distribution.sh --r $BUILD_OPTS -DskipTests
+./dev/make-distribution.sh $BUILD_OPTS -DskipTests
 
 SPARK_SKIP_TESTS=$([ "$SPARK_RUN_TESTS" = "true" ] && echo false || echo true)
 

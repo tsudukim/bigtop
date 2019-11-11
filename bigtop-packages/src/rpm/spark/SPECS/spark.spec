@@ -212,7 +212,7 @@ done
 %{lib_spark}/examples
 %{lib_spark}/jars
 %exclude %{lib_spark}/jars/datanucleus-*.jar
-%{lib_spark}/licenses
+#%{lib_spark}/licenses
 %{lib_spark}/sbin
 %{lib_spark}/work
 %{etc_spark}
@@ -221,9 +221,9 @@ done
 %attr(0755,spark,spark) %{var_log_spark}
 %{bin}/spark-*
 %{bin}/find-spark-home
-%exclude %{lib_spark}/R
-%exclude %{lib_spark}/bin/sparkR
-%exclude %{bin}/sparkR
+#%exclude %{lib_spark}/R
+#%exclude %{lib_spark}/bin/sparkR
+#%exclude %{bin}/sparkR
 
 %files -n spark-python
 %defattr(-,root,root,755)
@@ -245,11 +245,11 @@ done
 %{lib_spark}/yarn/spark-*-yarn-shuffle.jar
 %{lib_spark}/yarn/lib/spark-yarn-shuffle.jar
 
-%files -n spark-sparkr
-%defattr(-,root,root,755)
-%{lib_spark}/R
-%{lib_spark}/bin/sparkR
-%{bin}/sparkR
+#%files -n spark-sparkr
+#%defattr(-,root,root,755)
+#%{lib_spark}/R
+#%{lib_spark}/bin/sparkR
+#%{bin}/sparkR
 
 %define service_macro() \
 %files -n %1 \
